@@ -1,4 +1,4 @@
-package com.reactnativewebhelloworld;
+package com.bukasist;
 
 import android.app.Application;
 
