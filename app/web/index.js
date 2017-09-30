@@ -1,12 +1,10 @@
 import React          from 'react';
-import { render }     from 'react-dom';
+import ReactDOM       from 'react-dom';
 import Root           from './containers/Root';
-import configureStore from '../store/configureStore';
+import Routes                   from '../routes/web-route';
 
 // load our css
 require('./styles/style.less');
-
-const store = configureStore();
 const rootElement = document.getElementById('root');
 
-render( <Root store={store} />, rootElement );
+ReactDOM.render( <Root/>, rootElement );
