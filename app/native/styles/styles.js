@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export const appStyle = StyleSheet.create({
-  reactNativeWeb: {
+  container: {
     flexDirection: 'column',
     flex: 1,
     justifyContent: 'center',
