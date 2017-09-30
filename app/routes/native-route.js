@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
-import App from "../native/containers/App"
+import Home from "../native/containers/Home"
 import Chat from "../native/containers/Chat"
 
 export const RootNavigator = StackNavigator({
   Home: {
-    screen: App
+    screen: Home
   },
   Chat: {
     screen: Chat
