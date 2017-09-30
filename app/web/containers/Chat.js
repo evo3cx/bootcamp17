@@ -17,6 +17,7 @@ class ReactNativeWebHelloWorld extends Component {
     return (
       <div className="react-native-web">
         <Header />
+        <span> Chat </span>
         <HelloWorld
           onClick={() => dispatch(toggleColor())}
           color={color}
@@ -32,7 +33,7 @@ ReactNativeWebHelloWorld.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const select = state => state.home;
+const select = state => state;
 
 // Wrap the component to inject dispatch and state into it
 export default connect(select)(ReactNativeWebHelloWorld);
