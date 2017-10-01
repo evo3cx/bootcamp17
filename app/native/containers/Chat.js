@@ -50,7 +50,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state)=>{
-  return state.home;
+  return state.example;
 }
 
 // Wrap the component to inject dispatch and state into it

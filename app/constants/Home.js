@@ -1,8 +1,8 @@
 // Options
-export const STYLE_LIST = [ 'Nikahan', 'Acara Formal', 'Kencan' ]
+export const EVENT_LIST = [ 'Nikahan', 'Acara Formal', 'Kencan' ]
 export const DRESS_SIZE_LIST = [ 'XS', 'S', 'M', 'L', 'XL', 'XXL' ]
 export const PANT_SIZE_LIST = [ '27', '28', '29', '30', '31', '32', '33', '34', '35', '35', '36', '37', '38' ]
-export const COLOR_LIST = [ 'Merah', 'Biru', 'Hijau', 'Kuning', 'Pink', 'Ungu' ]
+export const COLOR_LIST = [ 'Putih', 'Merah', 'Biru', 'Hijau', 'Kuning', 'Pink', 'Ungu' ]
 
 // Steps const
 export const BUDGET = 0;
@@ -21,3 +21,10 @@ export const DRESS_SIZE_QUESTION = 'Semoga acaranya lancar ya sis :heart_eyes::h
 export const PANT_SIZE_QUESTION = 'Kalau ukuran celana atau roknya sis?'
 export const COLOR_QUESTION = 'Terakhir dari Buka, mau prioritasin warna yang mana nih?'
 export const CLOSING_TEXT = 'Oke deh, tunggu sebentar ya, Buka cariin yang sesuai ...'
+
+// Actions
+export const INPUT_BUDGET = 'INPUT_BUDGET';
+export const CHOOSE_EVENT = 'CHOOSE_EVENT';
+export const CHOOSE_DRESS_SIZE = 'CHOOSE_DRESS_SIZE';
+export const CHOOSE_PANT_SIZE = 'CHOOSE_PANT_SIZE';
+export const CHOOSE_COLOR = 'CHOOSE_COLOR';
