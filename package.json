@@ -16,6 +16,7 @@
 	"dependencies": {
 		"babel-polyfill": "^6.26.0",
 		"clone": "^1.0.2",
+		"material-design-icons": "^3.0.1",
 		"material-ui": "^0.19.2",
 		"morgan": "^1.6.1",
 		"native-base": "^2.3.2",
