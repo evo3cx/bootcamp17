@@ -23,7 +23,10 @@ const WebRouter = ({})=>(
   <Provider store={store}>
     <div>
       <Router history={history}>
-        <Route path="/" component={Home}/>
+        <Route path="/" component={Home}>
+          <IndexRoute component={Home}/>
+          <Route path="/chat" component={Chat}/>
+        </Route>
       </Router>
     </div>
   </Provider>
