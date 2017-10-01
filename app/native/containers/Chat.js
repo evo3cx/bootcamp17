@@ -12,10 +12,14 @@ import {
 
 /** The app entry point */
 class App extends Component {
+  static navigationOptions = {
+    headerBackTitle: null
+  };
+
 
   onPressButton(){
     const {navigate} = this.props.navigation;
-    navigate('Home')
+    
   }
 
   render() {

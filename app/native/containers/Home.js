@@ -48,6 +48,9 @@ import {
 import { appStyle } from '../styles/styles';
 
 class Home extends Component {
+  static navigationOptions = {
+    title: 'Bukasist'
+  };
 
   constructor(props) {
     super(props);
@@ -71,9 +74,6 @@ class Home extends Component {
 
     return (
       <Container style={appStyle.container}>
-        <Header>
-          <Body><Title>Bukasist</Title></Body>
-        </Header>
         <Content>
           <List>
             { renderUtil(step == BUDGET, this.listItem(<Text>{WELCOME_TEXT + username + Emoji.emojify(' :blush:')}</Text>)) }
