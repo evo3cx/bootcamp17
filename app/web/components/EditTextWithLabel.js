@@ -3,6 +3,16 @@ import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 
 class EditTextWithLabel extends Component{
+  onEnter(e){
+    if (e.charCode !== 13) {
+      return
+    }
+    console.log("enter");
+    this.props.onEnter()
+    // onEnter()
+    return
+  }
+
   render(){
     const {value, onChange, className} = this.props
     return (
@@ -14,7 +24,8 @@ class EditTextWithLabel extends Component{
             hintText="Rp"
             type="Number"
             value={value}
-            onChange={onChange}
+            onKeyPress={(e)=> this.onEnter(e)}
+            onChange={(e, value)=> onChange(value)}
           />
         </div>
       </div>
@@ -23,10 +34,11 @@ class EditTextWithLabel extends Component{
 }
 
 EditTextWithLabel.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
   optname: PropTypes.string.isRequired,
   className: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  onEnter: PropTypes.func.isRequired,
 }
 
 export default EditTextWithLabel;

@@ -1,8 +1,8 @@
 // Options
 export const EVENT_LIST = [ 'Nikahan', 'Acara Formal', 'Kencan' ]
 export const DRESS_SIZE_LIST = [ 'XS', 'S', 'M', 'L', 'XL', 'XXL' ]
-export const PANT_SIZE_LIST = [ '27', '28', '29', '30', '31', '32', '33', '34', '35', '35', '36', '37', '38' ]
-export const COLOR_LIST = [ 'Putih', 'Merah', 'Biru', 'Hijau', 'Kuning', 'Pink', 'Ungu' ]
+export const PANT_SIZE_LIST = [ '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38' ]
+export const COLOR_LIST = [ 'Merah', 'Biru', 'Hijau', 'Kuning', 'Pink', 'Ungu' ]
 
 // Steps const
 export const BUDGET = 0;
