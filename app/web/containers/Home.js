@@ -28,6 +28,7 @@ import {
 
 import EditTextWithLabel from '../components/EditTextWithLabel';
 import OptionsWithLabel from '../components/OptionsWithLabel';
+import ResultSearch from '../components/ResultSearch'
 
 
 class Home extends Component{
@@ -130,8 +131,12 @@ class Home extends Component{
 
             { CLOSING <= this.state.step &&
               <div className="form-submit">
-                <button onClick={() => this.props.history.go('chat')}>Go to /foo</button>
+                <button onClick={() => this.setState({step: 7})}>Cari</button>
               </div>
+            }
+
+            { 7 <= this.state.step &&
+              <ResultSearch />
             }
         </div>
       </div>
