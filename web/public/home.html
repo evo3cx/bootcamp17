@@ -1,0 +1,117 @@
+<html>
+  <head>
+    <title>BLFashion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="page">
+      <div class="chat-container">
+        <div class="chat">
+          <div class="greeting">
+            Hi,
+            <span class="name">Miranda</span>
+          </div>
+          <div class="intro">
+            Lagi bingung cari pakaian? Yuk
+            <span class="bot-name">Buka</span>
+            bantuin cari. Tapi jawab dulu ya pertanyaan-pertanyaan aku.
+          </div>
+          <div class="question-wrapper">
+            <div class="question">Budget kamu berapa?</div>
+            <div class="answer">
+              <div class="input-text">
+                Rp
+                <input type="number" name="budget" min="0">
+              </div>
+            </div>
+          </div>
+          <div class="question-wrapper">
+            <div class="question">Style apa yang kamu cari? Pilih 1 aja ya</div>
+            <div class="answer">
+              <label class="input-radio">
+                <input type="radio" name="style" checked>
+                <span class="inner-label">Kantor</span>
+              </label>
+              <label class="input-radio">
+                <input type="radio" name="style">
+                <span class="inner-label">Pesta</span>
+              </label>
+               <label class="input-radio">
+                <input type="radio" name="style">
+                <span class="inner-label">Hijab</span>
+              </label>
+            </div>
+          </div>
+          <div class="question-wrapper">
+            <div class="question">Ukuran pakaian kamu apa?</div>
+            <div class="answer">
+              <div class="input-select">
+                Atasan
+                <select name="top-size">
+                  <option>S</option>
+                  <option>M</option>
+                  <option>L</option>
+                  <option>XL</option>
+                  <option>XXL</option>
+                </select>
+              </div>
+              <div class="input-select">
+                Bawahan
+                <select name="bottom-size">
+                  <option>S</option>
+                  <option>M</option>
+                  <option>L</option>
+                  <option>XL</option>
+                  <option>XXL</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="question-wrapper">
+            <div class="question">kamu cari warna apa?</div>
+            <div class="answer">
+              <div class="input-select">
+                Atasan
+                <select name="top-color">
+                  <option>Bebas</option>
+                  <option>Putih</option>
+                  <option>Hitam</option>
+                  <option>Merah</option>
+                  <option>Biru</option>
+                </select>
+              </div>
+              <div class="input-select">
+                Bawahan
+                <select name="bottom-color">
+                  <option>Bebas</option>
+                  <option>Putih</option>
+                  <option>Hitam</option>
+                  <option>Merah</option>
+                  <option>Biru</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-submit">
+          <input type="submit" class="submit-button" value="Cari">
+          </div>
+        </div>
+      </div>
+      <div class="load-layer hidden">
+          <div class="load-content">
+            <div class="loader">Loading...</div>
+            <div class="load-content__text">
+              Tunggu sebentar ya,
+              <span class="bot-name">Buka</span>
+              cariin yang
+              <span class="name">Miranda</span>
+              mau.
+            </div>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,24 +1,18 @@
-// get the page ready
-* { outline: none; box-sizing: border-box; }
-body { padding: 0; margin: 0; }
-html, body, .react-native-web { height: 100%; width: 100%; position: absolute; top: 0; right: 0; overflow: hidden;}
-body, button, input {
-  font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-  font-size: 1em;
+* {
+  outline: none;
+  box-sizing: border-box;
 }
 
-// let the real CSS begin
-.react-native-web {
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
+*:focus {
+  outline: none;
+}
+input[type='number'] {
+    -moz-appearance:textfield;
+}
 
-  .hello-world {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 50%;
-  }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
 
 body {
@@ -49,13 +43,11 @@ body {
 
 .name {
   font-weight: bold;
-  margin: 0 5px;
 }
 
 .bot-name {
   color: #d71149;
   font-weight: bold;
-  margin: 0 5px;
 }
 
 .question-wrapper {
@@ -70,12 +62,77 @@ body {
   padding-left: 16px;
 }
 
-.chip {
-
-  &.active {
-    background: rgb(100, 181, 246) !important;
-  }
+.input-text {
+  border-bottom: 2px solid #999;
+  display: inline-block;
 }
+
+.input-text input {
+  width: 200px;
+  padding: 5px;
+  border: none;
+  font-size: 16px;
+  line-height: 20px;
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.input-radio {
+  margin-right: 15px;
+  cursor: pointer;
+  position: relative;
+}
+
+.input-radio input[type='radio'] {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.input-radio .inner-label {
+  display: inline-block;
+  padding-left: 20px;
+  position: relative;
+}
+
+.input-radio .inner-label::after {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: '\f10c';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+.input-radio input[type='radio']:checked + .inner-label::after {
+  content: '\f058';
+  color: #d71149;
+}
+
+.input-select {
+  width: 155px;
+  display: inline-block;
+}
+
+.input-select select {
+  padding: 5px;
+  border: none;
+  background: none;
+  border-bottom: 2px solid #999;
+  font-size: 16px;
+  line-height: 20px;
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+}
+
 .form-submit {
   text-align: right;
   margin-top: 20px;
