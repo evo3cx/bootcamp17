@@ -16,11 +16,11 @@ import {
 
 const initialState = {
   loading: false,
-  budget: 0,
-  event: null,
-  dress_size: 0,
-  pant_size: 1,
-  color: null,
+  budget: -1,
+  event: -1,
+  dress_size: -1,
+  pant_size: -1,
+  color: -1,
   step: BUDGET
 };
 
@@ -35,25 +35,26 @@ export default function reduce(state = initialState, action) {
   case CHOOSE_EVENT:
     return assign({}, state, {
       step: DRESS_SIZE,
-      budget: action.data,
+      event: action.data,
     });
 
   case CHOOSE_DRESS_SIZE:
     return assign({}, state, {
       step: PANT_SIZE,
-      budget: action.data,
+      dress_size: action.data,
     });
 
   case CHOOSE_PANT_SIZE:
     return assign({}, state, {
       step: COLOR,
-      budget: action.data,
+      pant_size: action.data,
     });
 
   case CHOOSE_COLOR:
     return assign({}, state, {
       step: CLOSING,
-      budget: action.data,
+      color: action.data,
+      loading: true
     });
 
   default:
