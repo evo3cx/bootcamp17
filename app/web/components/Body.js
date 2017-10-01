@@ -21,7 +21,7 @@ export default class Body extends Component {
             <span className="bot-name">Buka</span>
             bantuin cari. Tapi jawab dulu ya pertanyaan-pertanyaan aku.
           </div>
-          <div className="question-wrapper">
+          <div className="question-wrapper animated fadeInLeft">
             <div className="question">Budget kamu berapa?</div>
             <div className="answer">
               <TextField

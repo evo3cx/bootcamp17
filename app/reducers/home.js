@@ -1,39 +1,59 @@
 import clone        from 'clone';
 import assign       from 'object-assign';
 import {
-  TOGGLE_COLOR,
-  EXAMPLE_REQUEST_START,
-  EXAMPLE_REQUEST_DATA,
-} from '../constants/Constants';
+  INPUT_BUDGET,
+  CHOOSE_EVENT,
+  CHOOSE_DRESS_SIZE,
+  CHOOSE_PANT_SIZE,
+  CHOOSE_COLOR,
+  BUDGET,
+  EVENT,
+  DRESS_SIZE,
+  PANT_SIZE,
+  COLOR,
+  CLOSING
+} from '../constants/Home';
 
 const initialState = {
-  color: 'red',
-  data: {
-    loading: false,
-    objects: [],
-  },
+  loading: false,
+  budget: 0,
+  event: null,
+  dress_size: 0,
+  pant_size: 1,
+  color: null,
+  step: BUDGET
 };
 
 export default function reduce(state = initialState, action) {
   switch (action.type) {
-  case TOGGLE_COLOR:
+  case INPUT_BUDGET:
     return assign({}, state, {
-      color: state.color === 'red' ? 'blue' : 'red'
+      step: EVENT,
+      budget: action.data,
     });
 
-  case EXAMPLE_REQUEST_START:
+  case CHOOSE_EVENT:
     return assign({}, state, {
-      data: assign({}, state.data, {
-        loading: true,
-      }),
+      step: DRESS_SIZE,
+      budget: action.data,
     });
 
-  case EXAMPLE_REQUEST_DATA:
+  case CHOOSE_DRESS_SIZE:
     return assign({}, state, {
-      data: assign({}, state.data, {
-        loading: false,
-        objects: action.data,
-      }),
+      step: PANT_SIZE,
+      budget: action.data,
+    });
+
+  case CHOOSE_PANT_SIZE:
+    return assign({}, state, {
+      step: COLOR,
+      budget: action.data,
+    });
+
+  case CHOOSE_COLOR:
+    return assign({}, state, {
+      step: CLOSING,
+      budget: action.data,
     });
 
   default:
