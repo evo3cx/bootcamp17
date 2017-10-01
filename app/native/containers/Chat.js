@@ -12,10 +12,14 @@ import {
 
 /** The app entry point */
 class App extends Component {
+  static navigationOptions = {
+    headerBackTitle: null
+  };
+
 
   onPressButton(){
     const {navigate} = this.props.navigation;
-    navigate('Home')
+    
   }
 
   render() {
@@ -46,7 +50,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state)=>{
-  return state.home;
+  return state.example;
 }
 
 // Wrap the component to inject dispatch and state into it

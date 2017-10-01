@@ -8,7 +8,7 @@ export default class EditTextWithLabel extends Component {
       <Content>
           <Text>{ label }</Text>
           <List horizontal dataArray={ options } renderRow={(item) =>
-              <ListItem noBorder androidRippleColor>
+              <ListItem noBorder androidRippleColor selected>
                 <Button rounded light>
                     <Text>{ item }</Text>
                 </Button>

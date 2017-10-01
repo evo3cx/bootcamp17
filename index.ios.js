@@ -7,10 +7,8 @@ const store = configureStore();
 
 class Bukasist extends Component {
   render() {
-    return (
-      <Root store={store} />
-    );
+    return <Root store={store} />;
   }
 }
 
-AppRegistry.registerComponent('Bukasist', () => Bukasist);
+AppRegistry.registerComponent("Bukasist", () => Bukasist);

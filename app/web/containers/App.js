@@ -2,13 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 // dumb components
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Header     from '../components/Header';
-import HelloWorld from '../components/HelloWorld';
 import Body     from '../components/Body';
-// actions
-import {
-  toggleColor,
-} from '../../actions/actions';
+import ResultSearch     from '../components/ResultSearch';
 
 /** The app entry point */
 class App extends Component {
@@ -18,7 +13,7 @@ class App extends Component {
 
     return (
       <MuiThemeProvider>
-        <Body />
+        <ResultSearch />
       </MuiThemeProvider>
     );
   }

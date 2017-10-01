@@ -3,7 +3,7 @@ import { connect }  from 'react-redux';
 import Emoji from 'node-emoji';
 import renderUtil from './../util/render';
 import {
-  STYLE_LIST,
+  EVENT_LIST,
   DRESS_SIZE_LIST,
   PANT_SIZE_LIST,
   COLOR_LIST,
@@ -42,20 +42,15 @@ import EditTextWithLabel from '../components/EditTextWithLabel';
 import OptionsWithLabel from '../components/OptionsWithLabel';
 // actions
 import {
-  toggleColor,
+  inputBudget,
 } from '../../actions/actions';
 
 import { appStyle } from '../styles/styles';
 
 class Home extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      step: BUDGET,
-      username: 'Marinda'
-    }
-  }
+  static navigationOptions = {
+    title: 'Bukasist'
+  };
 
   listItem(content) {
     return (<ListItem noBorder>{ content }</ListItem>);
@@ -66,29 +61,31 @@ class Home extends Component {
     navigate('Chat')
   }
 
+  saveBudget(value) {
+    const { dispatch } = this.props;
+    dispatch(inputBudget(value))
+  }
+
   render() {
-    const { username, step } = this.state;
+    const { user, home, dispatch } = this.props;
 
     return (
       <Container style={appStyle.container}>
-        <Header>
-          <Body><Title>Bukasist</Title></Body>
-        </Header>
         <Content>
           <List>
-            { renderUtil(step == BUDGET, this.listItem(<Text>{WELCOME_TEXT + username + Emoji.emojify(' :blush:')}</Text>)) }
-            { renderUtil(step == BUDGET, this.listItem(<Text>{Emoji.emojify(OPENING_TEXT)}</Text>)) }
-            { renderUtil(step == BUDGET, this.listItem(<EditTextWithLabel label={Emoji.emojify(BUDGET_QUESTION)}/>)) }
-            { renderUtil(step == EVENT, this.listItem(<OptionsWithLabel label={Emoji.emojify(EVENT_QUESTION)} options={ STYLE_LIST }/>)) }
-            { renderUtil(step == DRESS_SIZE, this.listItem(<OptionsWithLabel label={Emoji.emojify(DRESS_SIZE_QUESTION)} options={ DRESS_SIZE_LIST }/>)) }
-            { renderUtil(step == PANT_SIZE, this.listItem(<OptionsWithLabel label={Emoji.emojify(PANT_SIZE_QUESTION)} options={ PANT_SIZE_LIST }/>)) }
-            { renderUtil(step == COLOR, this.listItem(<OptionsWithLabel label={Emoji.emojify(COLOR_QUESTION)} options={ COLOR_LIST }/>)) }
-            { renderUtil(step == CLOSING, this.listItem(<Text>{Emoji.emojify(CLOSING_TEXT)}</Text>)) }
+            { renderUtil(home.step >= BUDGET, this.listItem(<Text>{WELCOME_TEXT + user.username + Emoji.emojify(' :blush:')}</Text>)) }
+            { renderUtil(home.step >= BUDGET, this.listItem(<Text>{Emoji.emojify(OPENING_TEXT)}</Text>)) }
+            { renderUtil(home.step >= BUDGET, this.listItem(<EditTextWithLabel label={Emoji.emojify(BUDGET_QUESTION)} onSubmit={this.saveBudget.bind(this)} />))}
+            { renderUtil(home.step >= EVENT, this.listItem(<OptionsWithLabel label={Emoji.emojify(EVENT_QUESTION)} options={ EVENT_LIST }/>)) }
+            { renderUtil(home.step >= DRESS_SIZE, this.listItem(<OptionsWithLabel label={Emoji.emojify(DRESS_SIZE_QUESTION)} options={ DRESS_SIZE_LIST }/>)) }
+            { renderUtil(home.step >= PANT_SIZE, this.listItem(<OptionsWithLabel label={Emoji.emojify(PANT_SIZE_QUESTION)} options={ PANT_SIZE_LIST }/>)) }
+            { renderUtil(home.step >= COLOR, this.listItem(<OptionsWithLabel label={Emoji.emojify(COLOR_QUESTION)} options={ COLOR_LIST }/>)) }
+            { renderUtil(home.step >= CLOSING, this.listItem(<Text>{Emoji.emojify(CLOSING_TEXT)}</Text>)) }
           </List>
         </Content>
         <Button
           onPress={() => this.onPressButton()}
-          title="Home"
+          title="Chat"
         />
       </Container>
     );
@@ -97,12 +94,15 @@ class Home extends Component {
 
 Home.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  color: PropTypes.string.isRequired,
-  data: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  home: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state)=>{
-  return state.home;
+  return {
+    home: state.home,
+    user: state.user
+  }
 }
 
 // Wrap the component to inject dispatch and state into it
