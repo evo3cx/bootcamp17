@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 // dumb components
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Header     from '../components/Header';
 import HelloWorld from '../components/HelloWorld';
-import Body     from '../components/Body';
 // actions
 import {
   toggleColor,
@@ -17,9 +15,14 @@ class ReactNativeWebHelloWorld extends Component {
     const { dispatch, color, data } = this.props;
 
     return (
-      <MuiThemeProvider>
-        <Body />
-      </MuiThemeProvider>
+      <div className="react-native-web">
+        <Header />
+        <span> Chat </span>
+        <HelloWorld
+          onClick={() => dispatch(toggleColor())}
+          color={color}
+        />
+      </div>
     );
   }
 }
@@ -30,7 +33,7 @@ ReactNativeWebHelloWorld.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-const select = state => state.home;
+const select = state => state;
 
 // Wrap the component to inject dispatch and state into it
 export default connect(select)(ReactNativeWebHelloWorld);

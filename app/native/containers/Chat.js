@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Button } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { connect }  from 'react-redux';
 import { appStyle } from '../styles/styles';
 // components
@@ -12,21 +12,27 @@ import {
 
 /** The app entry point */
 class App extends Component {
+
+  onPressButton(){
+    const {navigate} = this.props.navigation;
+    navigate('Home')
+  }
+
   render() {
     // injected by connect call
     const {dispatch, color, data} = this.props;
-    const {navigate} = this.props.navigation
-    console.log(this.props);
+
     return (
       <View style={appStyle.container}>
         <Header />
+        <Text> Chat </Text>
+        <Button
+          onPress={() => this.onPressButton()}
+          title="Home"
+        />
         <HelloWorld
           onPress={() => dispatch(toggleColor())}
           color={color}
-        />
-        <Button
-          onPress={() => navigate('Chat')}
-          title="Chat"
         />
       </View>
     );
