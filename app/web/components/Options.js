@@ -23,12 +23,12 @@ export default class Options extends Component {
   }
 
   renderChip(label) {
-    const {value, onClick, name} = this.props
+    const {value, onClick, optname} = this.props
     let styleChecked = label === value? 'chipChecked' : 'chip'
     return (
       <Chip
         key={label}
-        onClick={() => onClick(name, label)}
+        onClick={() => onClick(label)}
         style={this.styles[styleChecked]}
       >
         {label}
@@ -40,7 +40,7 @@ export default class Options extends Component {
     const {labels, value, onClick} = this.props
     return (
       <div style={this.styles.wrapper}>
-        {labels.optionData.map(this.renderChip, this)}
+        {labels.map(this.renderChip, this)}
       </div>
     );
   }
@@ -48,7 +48,7 @@ export default class Options extends Component {
 
 Options.propTypes = {
   labels: PropTypes.array.isRequired,
-  value: PropTypes.string,
-  name: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  optname: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 }

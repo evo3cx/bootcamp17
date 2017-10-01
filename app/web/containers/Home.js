@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Emoji from 'node-emoji';
 import {
   STYLE_LIST,
   DRESS_SIZE_LIST,
@@ -28,20 +30,24 @@ import OptionsWithLabel from '../components/OptionsWithLabel';
 
 
 class Home extends Component{
-  state : {
-    name: "Miranda",
-    budget: 0,
-    evnet: "",
-    dress_size: "",
-    pant_size: "",
-    color: "",
+  constructor(props){
+    super(props)
+    this.state = {
+      name: "Miranda",
+      budget: 0,
+      event: "",
+      dress_size: "",
+      pant_size: "",
+      color: "",
+      step: 0,
+    }
   }
 
   welcomeText(name){
     return (
       <div className="greeting">
         {WELCOME_TEXT}
-        <span className="name">{name}</span>
+        <span className="name">Miranda</span>
       </div>
     )
   }
@@ -49,7 +55,7 @@ class Home extends Component{
   openingText(){
     return (
       <div className="intro">
-        {OPENING_TEXT}
+        {Emoji.emojify(OPENING_TEXT)}
       </div>
     )
   }
@@ -58,6 +64,12 @@ class Home extends Component{
     this.setState({
       state: value
     })
+
+    console.log(this.state, state,value);
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    console.log(this.state, "pop", prevState);
   }
 
   render(){
@@ -66,7 +78,7 @@ class Home extends Component{
     return (
       <div className="chat-container">
         <div className="chat">
-          {this.welcomeText(this.state.name)}
+          {this.welcomeText("Miranda")}
           {this.openingText()}
 
           <EditTextWithLabel
@@ -74,43 +86,65 @@ class Home extends Component{
             question={BUDGET_QUESTION}
             className="question-wrapper"
             value={this.state.budget}
-            onClick={this.onChange} />
+            onChange={(value)=> this.setState({"budget":value})}
+            onEnter={()=> this.setState({step:1})}
+             />
 
+          { EVENT <= this.state.step &&
           <OptionsWithLabel
             labels={STYLE_LIST}
             question={EVENT_QUESTION}
             optname="event"
             value={this.state.event}
-            onClick={this.onChange} />
+            onClick={(value)=> this.setState({"event":value, step: DRESS_SIZE})} />
+          }
 
-          <OptionsWithLabel
-            labels={DRESS_SIZE_LIST}
-            optname="dress_size"
-            question={DRESS_SIZE_QUESTION}
-            value={this.state.dress_size}
-            onClick={this.onChange} />
+          { DRESS_SIZE <= this.state.step &&
+            <OptionsWithLabel
+              labels={DRESS_SIZE_LIST}
+              optname="dress_size"
+              question={DRESS_SIZE_QUESTION}
+              value={this.state.dress_size}
+              onClick={(value)=> this.setState({"dress_size":value, step: PANT_SIZE})} />
+            }
 
-          <OptionsWithLabel
-            labels={PANT_SIZE_LIST}
-            optname="pant_size"
-            question={DRESS_SIZE_QUESTION}
-            value={this.state.pant_size}
-            onClick={this.onChange} />
+            { PANT_SIZE <= this.state.step &&
+            <OptionsWithLabel
+              labels={PANT_SIZE_LIST}
+              optname="pant_size"
+              question={PANT_SIZE_QUESTION}
+              value={this.state.pant_size}
+              onClick={(value)=> this.setState({"pant_size":value, step: COLOR})} />
+            }
 
-          <OptionsWithLabel
-            labels={COLOR_LIST}
-            optname="color"
-            question={COLOR_QUESTION}
-            value={this.state.color}
-            onClick={this.onChange} />
+            { COLOR <= this.state.step &&
+            <OptionsWithLabel
+              labels={COLOR_LIST}
+              optname="color"
+              question={COLOR_QUESTION}
+              value={this.state.color}
+              onClick={(value)=> this.setState({"color":value, step: CLOSING})} />
 
-          <div className="form-submit">
-            <input type="submit" className="submit-button" value="Cari"/>
-          </div>
+            }
+
+            { CLOSING <= this.state.step &&
+              <div className="form-submit">
+                <input type="submit" className="submit-button" value="Cari"/>
+              </div>
+            }
         </div>
       </div>
     )
   }
 }
 
-export default Home
+Home.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  color: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
+};
+
+const select = state => state.home;
+
+// Wrap the component to inject dispatch and state into it
+export default connect(select)(Home);
