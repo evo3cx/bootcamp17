@@ -7,7 +7,7 @@ import { syncHistoryWithStore, routerReducer,hashHistory } from 'react-router-re
 import { createBrowserHistory } from 'history';
 
 import reducers from '../reducers/web'
-import App from '../web/containers/App'
+import Home from '../web/containers/Home'
 import Chat from '../web/containers/Chat'
 
 
@@ -23,7 +23,7 @@ const WebRouter = ({})=>(
   <Provider store={store}>
     <div>
       <Router history={history}>
-        <Route path="/" component={App}/>
+        <Route path="/" component={Home}/>
       </Router>
     </div>
   </Provider>

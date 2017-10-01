@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Chip from 'material-ui/Chip';
 
 export default class Options extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {optionData: props.data};
     this.styles = {
       chip: {
         margin: 4,
@@ -22,35 +22,33 @@ export default class Options extends Component {
     };
   }
 
-  handleTouchTap(key) {
-    let optionData = [ ...this.state.optionData ];
-    for(let i in optionData){
-      if(optionData[i].key == key){
-        optionData[i].checked = true;
-      } else {
-        optionData[i].checked = false;
-      }
-    }
-    this.setState({ optionData });
-  }
-
-  renderChip(data) {
-    let styleChecked = data.checked? 'chipChecked' : 'chip'
+  renderChip(label) {
+    const {value, onClick, name} = this.props
+    let styleChecked = label === value? 'chipChecked' : 'chip'
     return (
       <Chip
-        key={data.key}
-        onClick={() => this.handleTouchTap(data.key)}
+        key={label}
+        onClick={() => onClick(name, label)}
         style={this.styles[styleChecked]}
       >
-        {data.label}
+        {label}
       </Chip>
     );
   }
+
   render() {
+    const {labels, value, onClick} = this.props
     return (
       <div style={this.styles.wrapper}>
-        {this.state.optionData.map(this.renderChip, this)}
+        {labels.optionData.map(this.renderChip, this)}
       </div>
     );
   }
+}
+
+Options.propTypes = {
+  labels: PropTypes.array.isRequired,
+  value: PropTypes.string,
+  name: PropTypes.string,
+  onClick: PropTypes.func.isRequired
 }

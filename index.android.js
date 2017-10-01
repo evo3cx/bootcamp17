@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry} from 'react-native';
 import { Provider } from 'react-redux';
 import Root           from './app/native/containers/Root';
-import configureStore from './app/store/configureStore.prod.js';
+import configureStore from './app/store/configureStore.native.js';
 // import Route from './app/native/containers/route'
 const store = configureStore();
 
