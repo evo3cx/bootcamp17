@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Emoji from 'node-emoji';
+import { Link, browserHistory } from 'react-router'
 import {
-  STYLE_LIST,
+  EVENT_LIST,
   DRESS_SIZE_LIST,
   PANT_SIZE_LIST,
   COLOR_LIST,
@@ -92,7 +93,7 @@ class Home extends Component{
 
           { EVENT <= this.state.step &&
           <OptionsWithLabel
-            labels={STYLE_LIST}
+            labels={EVENT_LIST}
             question={EVENT_QUESTION}
             optname="event"
             value={this.state.event}
@@ -129,7 +130,7 @@ class Home extends Component{
 
             { CLOSING <= this.state.step &&
               <div className="form-submit">
-                <input type="submit" className="submit-button" value="Cari"/>
+                <button onClick={() => this.props.history.go('chat')}>Go to /foo</button>
               </div>
             }
         </div>
@@ -141,7 +142,6 @@ class Home extends Component{
 Home.propTypes = {
   dispatch: PropTypes.func.isRequired,
   color: PropTypes.string.isRequired,
-  data: PropTypes.object.isRequired,
 };
 
 const select = state => state.home;
